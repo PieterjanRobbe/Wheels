@@ -13,9 +13,33 @@ wheelCanvas.addEventListener("mousedown", function(event){ wheelPress(wheel,even
 wheelCanvas.addEventListener("mousemove", function(event){ wheelDrag(wheel,event); }, false);
 wheelCanvas.addEventListener("mouseup", function(event){ wheelRelease(wheel,road,event); }, false);
 wheelCanvas.addEventListener("click", function(event){ wheelClick(wheel,road,event); }, false);
+
+//wheelCanvas.addEventListener('touchend', function(event){ e.preventDefault(); e.target.mouseup(); }, false);
+
+//roadCanvas.addEventListener("mousedown", function(event){ roadPress(road); }, false);
+//roadCanvas.addEventListener("mousemove", function(event){ roadDrag(wheel,road,event); }, false);
+//roadCanvas.addEventListener("mouseup", function(event){ roadRelease(road); }, false);
+
+///////////////////////////////////////////
+
 roadCanvas.addEventListener("mousedown", function(event){ roadPress(road); }, false);
-roadCanvas.addEventListener("mousemove", function(event){ roadDrag(wheel,road,event); }, false);
+roadCanvas.addEventListener("touchstart", function(event){ roadPress(road); }, false);
+
+roadCanvas.addEventListener("mousemove", function(event){ roadDragHandler(wheel,road,event); }, false);
+roadCanvas.addEventListener('touchmove', function(event){ roadDragHandler(wheel,road,event); }, false);
+
 roadCanvas.addEventListener("mouseup", function(event){ roadRelease(road); }, false);
+roadCanvas.addEventListener("touchend", function(event){ roadRelease(road); }, false);
+
+function roadDragHandler(wheel,road,event) {
+	if ( (event.clientX) && (event.clientY) ) {
+		roadDrag(wheel,road,event);
+	} else if (event.targetTouches) {
+		event.preventDefault();
+		roadDrag(wheel,road,event.targetTouches[0]);
+	}
+}
+
 
 image0.onload = function(){
 	wheel.image = image0;
