@@ -6,7 +6,7 @@ function Road(canvas) {
 	this.canvasLeft = canvas.offsetLeft;
 	this.canvasTop = canvas.offsetTop;
 	this.canvasWidth = window.innerWidth;
-	this.canvasHeight = Math.sqrt(2)*canvas.height;
+	this.canvasHeight = canvas.height;
 	this.paint = false;
 	this.X = [];
 
