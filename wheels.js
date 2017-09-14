@@ -5,7 +5,7 @@ function Wheel(canvas) {// determine available width and height
 	var w = window.innerWidth;
 
 	// deduce optimal WheelCanvas size
-	wheelCanvas.height = Math.min(500,Math.max(300,w/3));
+	wheelCanvas.height = Math.min(300,Math.max(150,w/3));
 	wheelCanvas.width = wheelCanvas.height/5*7;
 
 	this.context = canvas.getContext('2d');
