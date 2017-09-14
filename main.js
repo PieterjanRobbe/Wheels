@@ -18,9 +18,7 @@ wheelCanvas.addEventListener('touchmove', function(event){ wheelDragHandler(whee
 wheelCanvas.addEventListener("mouseup", function(event){ wheelRelease(wheel,road,event); }, false);
 wheelCanvas.addEventListener("touchend", function(event){ wheelRelease(wheel,road,event); }, false);
 
-// // // // // // // //
 wheelCanvas.addEventListener("click", function(event){ wheelClick(wheel,road,event); }, false);
-// // // // // // // //
 
 roadCanvas.addEventListener("mousedown", function(event){ roadPress(road); }, false);
 roadCanvas.addEventListener("touchstart", function(event){ roadPress(road); }, false);
