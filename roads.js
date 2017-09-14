@@ -27,6 +27,16 @@ function roadPress(road) {
 	road.paint = true;
 }
 
+// drag handler for touch events
+function roadDragHandler(wheel,road,event) {
+	if ( (event.clientX) && (event.clientY) ) {
+		roadDrag(wheel,road,event);
+	} else if (event.targetTouches) {
+		event.preventDefault();
+		roadDrag(wheel,road,event.targetTouches[0]);
+	}
+}
+
 // dragging on the road canvas
 function roadDrag(wheel, road, event) {
 	if (road.paint) {

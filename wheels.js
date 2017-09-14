@@ -53,6 +53,16 @@ function wheelPress(wheel, event) {
 	}
 }
 
+// drag handler for touch events
+function wheelDragHandler(wheel,event) {
+	if ( (event.clientX) && (event.clientY) ) {
+		wheelDrag(wheel,event);
+	} else if (event.targetTouches) {
+		event.preventDefault();
+		wheelDrag(wheel,event.targetTouches[0]);
+	}
+}
+
 // dragging on the wheel canvas
 function wheelDrag(wheel, event) {
 	var x = event.pageX - wheel.canvasLeft,
