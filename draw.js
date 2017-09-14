@@ -6,11 +6,11 @@ var image0 = new Image(),
 	image4 = new Image();
 
 // Load images
-image0.src = "art/p4.pdf";
-image1.src = "art/p3.pdf";
-image2.src = "art/p2.pdf";
-image3.src = "art/p1.pdf";
-image4.src = "art/p0.pdf";
+image0.src = "art/p4.png";
+image1.src = "art/p3.png";
+image2.src = "art/p2.png";
+image3.src = "art/p1.png";
+image4.src = "art/p0.png";
 
 // draw wheel on wheel canvas
 function drawWheel(wheel) {
