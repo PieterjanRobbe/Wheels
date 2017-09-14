@@ -22,6 +22,6 @@ image0.onload = function(){
     drawWheel(wheel);
 }
 
-//resize(wheel, road, wheelCanvas, roadCanvas)
+resize(wheel, road, wheelCanvas, roadCanvas)
 
 
