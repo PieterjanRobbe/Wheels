@@ -40,14 +40,18 @@ function roadDragHandler(wheel,road,event) {
 // dragging on the road canvas
 function roadDrag(wheel, road, event) {
 	if (road.paint) {
-		var x = event.pageX - road.canvasLeft,
-			ncycles = Math.ceil(x/road.X[road.X.length-1])-1,
-			xMod = x % road.X[road.X.length-1],
-			k = computeWheelPosition(road,xMod);
-
-			drawRoad(wheel, road);
-			drawWheelOnRoad(wheel, road, k, ncycles*road.X[road.X.length-1]+road.X[k]);
+		var x = event.pageX - road.canvasLeft;
+		roadClick(wheel, road, x);
 	}
+}
+
+function roadClick(wheel, road, x) {
+	var ncycles = Math.ceil(x/road.X[road.X.length-1])-1,
+		xMod = x % road.X[road.X.length-1],
+		k = computeWheelPosition(road,xMod);
+
+		drawRoad(wheel, road);
+		drawWheelOnRoad(wheel, road, k, ncycles*road.X[road.X.length-1]+road.X[k]);
 }
 
 // mouse release on the road canvas
@@ -86,4 +90,5 @@ function resize(wheel, road, wheelCanvas, roadCanvas) {
 	//computeRoad();
 	drawWheel(wheel);
     drawRoad(wheel, road);
+    roadClick(wheel, road, road.canvasWidth/2); // draw wheel on road
 };

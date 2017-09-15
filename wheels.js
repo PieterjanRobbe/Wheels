@@ -100,6 +100,7 @@ function wheelRelease(wheel, road, event) {
 			interpolateWheel(wheel);
 			computeRoad(wheel, road);
 			drawRoad(wheel, road);
+			roadClick(wheel, road, road.canvasWidth/2); // draw wheel on road
 		}
 	}
 }
@@ -146,6 +147,7 @@ function wheelClick(wheel, road, event) {
 				drawWheel(wheel);
 				computeRoad(wheel, road);
 				drawRoad(wheel, road);
+				roadClick(wheel, road, road.canvasWidth/2); // draw wheel on road
 			}
 		}
 	}
