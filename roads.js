@@ -23,7 +23,8 @@ function resetRoad(road) {
 }
 
 // clicking on the road canvas
-function roadPress(road) {
+function roadPress(road,event) {
+	event.preventDefault();
 	road.paint = true;
 }
 
@@ -55,7 +56,8 @@ function roadClick(wheel, road, x) {
 }
 
 // mouse release on the road canvas
-function roadRelease(road) {
+function roadRelease(road,event) {
+	event.preventDefault();
 	road.paint = false;
 }
 

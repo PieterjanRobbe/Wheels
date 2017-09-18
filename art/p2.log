@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.8.2)  13 SEP 2017 13:41
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.5.23)  16 SEP 2017 20:12
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -57,26 +57,33 @@ File: size10.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
 \bibindent=\dimen102
 )
 \sa@box=\box26
-)
-(/usr/local/texlive/2017/texmf-dist/tex/latex/pgfplots/pgfplots.sty
-(/usr/local/texlive/2017/texmf-dist/tex/generic/pgfplots/pgfplots.revision.tex)
-Package: pgfplots 2016/08/10 v1.14 Data Visualization (1.14)
-(/usr/local/texlive/2017/texmf-dist/tex/latex/graphics/graphicx.sty
-Package: graphicx 2014/10/28 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
+runsystem(pdflatex  -shell-escape  -jobname 'p2' '\expandafter\def\csname sa@in
+ternal@run\endcsname{1}\input{p2}')...executed.
 
-(/usr/local/texlive/2017/texmf-dist/tex/latex/graphics/graphics.sty
-Package: graphics 2017/04/14 v1.1b Standard LaTeX Graphics (DPC,SPQR)
+ (./p2.aux)
+runsystem(convert -density 300 p2.pdf -resize 1080x800 -quality 90 p2.png)...ex
+ecuted.
 
-(/usr/local/texlive/2017/texmf-dist/tex/latex/graphics/trig.sty
-Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
-)
-(/usr/local/texlive/2017/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
-File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
-)
-Package graphics Info: Driver file: pdftex.def on input line 99.
 
-(/usr/local/texlive/2017/texmf-dist/tex/latex/graphics-def/pdftex.def
-File: pdftex.def 2017/01/12 v0.06k Graphics/color for pdfTeX
+Class standalone:
+Output written on p2.png.
+ ) ) 
+Here is how much of TeX's memory you used:
+ 691 strings out of 492995
+ 10878 string characters out of 6132704
+ 63651 words of memory out of 5000000
+ 4304 multiletter control sequences out of 15000+600000
+ 3640 words of font info for 14 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 34i,1n,56p,195b,49s stack positions out of 5000i,500n,10000p,200000b,80000s
+
+No pages of output.
+PDF statistics:
+ 0 PDF objects out of 1000 (max. 8388607)
+ 0 named destinations out of 1000 (max. 500000)
+ 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+
+pdfTeX
 
 (/usr/local/texlive/2017/texmf-dist/tex/generic/oberdiek/infwarerr.sty
 Package: infwarerr 2016/05/16 v1.4 Providing info/warning/error messages (HO)
@@ -575,8 +582,7 @@ File: pgflibraryshapes.multipart.code.tex 2010/01/07 v3.0.1a (rcs-revision 1.2)
 \pgfnodepartsevenbox=\box56
 \pgfnodepartsixbox=\box57
 \pgfnodepartfivebox=\box58
-)))
-No file p2.aux.
+))) (./p2.aux)
 \openout1 = `p2.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 12.
@@ -591,6 +597,7 @@ LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 12.
 LaTeX Font Info:    ... okay on input line 12.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 12.
 LaTeX Font Info:    ... okay on input line 12.
+
 (/usr/local/texlive/2017/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count118
@@ -653,15 +660,15 @@ s been generated with the most recent feature set (\pgfplotsset{compat=1.14}).
 
 ] (./p2.aux) ) 
 Here is how much of TeX's memory you used:
- 25220 strings out of 492995
- 666096 string characters out of 6132705
- 845441 words of memory out of 5000000
- 28388 multiletter control sequences out of 15000+600000
+ 25247 strings out of 492995
+ 666489 string characters out of 6132704
+ 846863 words of memory out of 5000000
+ 28412 multiletter control sequences out of 15000+600000
  3640 words of font info for 14 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 69i,7n,120p,726b,729s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 70i,7n,120p,782b,733s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on p2.pdf (1 page, 11376 bytes).
+Output written on p2.pdf (1 page, 11257 bytes).
 PDF statistics:
  11 PDF objects out of 1000 (max. 8388607)
  7 compressed objects within 1 object stream

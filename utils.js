@@ -102,13 +102,15 @@ function interpolateWheel(wheel) {
 }
 
 // add points between the release point and the origin
-function fillGap(wheel,x0,y0) {
-	var x1 = wheel.clickX[0],
-		y1 = wheel.clickY[0],
-		dist = Math.sqrt(Math.pow(x0-x1,2)+Math.pow(y0-y1,2)),
+function fillGap(wheel,x0,y0,x1,y1) {
+	var dist = distanceBetween(x0,y0,x1,y1),
 		npoints = Math.round(100/wheel.canvasWidth*dist),
 		xpts = linspace(x0,x1,npoints),
 		ypts = linspace(y0,y1,npoints);
 
 	for(var i=1;i<xpts.length;i++) { addClick(wheel,xpts[i],ypts[i]); }
+}
+
+function distanceBetween(x0,y0,x1,y1) {
+    return Math.sqrt(Math.pow(x0-x1,2)+Math.pow(y0-y1,2))
 }

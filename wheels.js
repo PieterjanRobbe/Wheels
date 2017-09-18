@@ -6,7 +6,7 @@ function Wheel(canvas) {// determine available width and height
 
 	// deduce optimal WheelCanvas size
 	wheelCanvas.height = Math.min(300,Math.max(150,w/3));
-	wheelCanvas.width = wheelCanvas.height/5*7;
+	wheelCanvas.width = wheelCanvas.height/6*8;
 
 	this.context = canvas.getContext('2d');
 	this.canvasLeft = canvas.offsetLeft;
@@ -15,6 +15,7 @@ function Wheel(canvas) {// determine available width and height
 	this.canvasHeight = canvas.height;
 	this.firstClick = true;
 	this.paint = false;
+	this.straight = false;
 	this.clickX = [];
 	this.clickY = [];
 	this.angle = [];
@@ -29,6 +30,7 @@ function Wheel(canvas) {// determine available width and height
 function resetWheel(wheel) {
 	wheel.firstClick = true;
 	wheel.paint = false;
+	wheel.straight = false;
 	wheel.clickX = [];
 	wheel.clickY = [];
 	wheel.angle = [];
@@ -39,8 +41,8 @@ function resetWheel(wheel) {
 function wheelPress(wheel, event) {
 	var x = event.pageX - wheel.canvasLeft,
 		y = event.pageY - wheel.canvasTop;
-
-	if ( isInsideDrawingArea(wheel,x) ) {
+	event.preventDefault();
+	if ( isInsideDrawingArea(wheel,x) && !wheel.straight ) {
 
 		if (wheel.firstClick) { // enable painting
 			wheel.paint = true;
@@ -71,7 +73,10 @@ function wheelDrag(wheel, event) {
 	if ( wheel.paint && isInsideDrawingArea(wheel,x) ) { // add new point
 		addClick(wheel,x,y);
 		drawWheel(wheel);
-	}
+	} else if ( wheel.straight ) {
+	    drawWheel(wheel);
+            drawStraightLine(wheel,x,y);
+        }
 }
 
 // mouse release on the wheel canvas
@@ -79,39 +84,43 @@ function wheelRelease(wheel, road, event) {
 	if (wheel.paint) {
 		var x = event.pageX - wheel.canvasLeft,
 			y = event.pageY - wheel.canvasTop;
-
+		event.preventDefault();
 		// connect release point and first point of wheel
-		fillGap(wheel,x,y)
-
+		fillGap(wheel,x,y,wheel.clickX[0],wheel.clickY[0]) 
 		// disable paint and show result
 		wheel.paint = false;
 		drawWheel(wheel);
 
-		// convert to polar coordinates
-		toPolarCoordinates(wheel);
-
-		// check if the wheel is valid
-		if ( !isValidWheel(wheel) ) {
-			alert("invalid wheel!");
-			resetWheel(wheel);
-			drawWheel(wheel);
-		} else { // if so, inteprolate and compute the corresponding road
-			sortWheel(wheel);
-			interpolateWheel(wheel);
-			computeRoad(wheel, road);
-			drawRoad(wheel, road);
-			roadClick(wheel, road, road.canvasWidth/2); // draw wheel on road
-		}
+                // action when wheel is closed
+                wheelIsClosed(wheel,road);
 	}
+}
+
+function wheelIsClosed(wheel,road) {
+    // convert to polar coordinates
+    toPolarCoordinates(wheel);
+
+    // check if the wheel is valid
+    if ( !isValidWheel(wheel) ) {
+	alert("invalid wheel!");
+	resetWheel(wheel);
+	drawWheel(wheel);
+    } else { // if so, interpolate and compute the corresponding road
+	sortWheel(wheel);
+	interpolateWheel(wheel);
+	computeRoad(wheel, road);
+	drawRoad(wheel, road);
+	roadClick(wheel, road, road.canvasWidth/2); // draw wheel on road
+    }
 }
 
 // mouse click on the wheel canvas
 function wheelClick(wheel, road, event) {
-	var x = event.pageX - wheel.canvasLeft;
-
+	var x = event.pageX - wheel.canvasLeft,
+	    y = event.pageY - wheel.canvasTop;
+	event.preventDefault();
 	if ( !isInsideDrawingArea(wheel,x) ) {
-		var borderWidth = ( wheel.canvasWidth - wheel.canvasHeight )/2,
-			y = event.pageY - wheel.canvasTop;
+		var borderWidth = ( wheel.canvasWidth - wheel.canvasHeight )/2;
 		if (x < borderWidth ) {
 			if (y < borderWidth) {
 				wheel.image = image0;
@@ -121,21 +130,26 @@ function wheelClick(wheel, road, event) {
 			if (y < borderWidth) {
 				wheel.image = image0;
 				clearAll(wheel, road);
-			} else {
+			} else if (y < 2*borderWidth) {
+                                wheel.image = image1;
+                                clearAll(wheel, road);
+				wheel.straight = true;
+                                wheel.firstClick = false;
+                        } else {
 				clearAll(wheel, road);
 				var r;
-				if (y < 2*borderWidth) {
-					wheel.image = image1;
-					r = r1;
-				} else if (y < 3*borderWidth) {
+				if (y < 3*borderWidth) {
 					wheel.image = image2;
-					r = r2;
+					r = r1;
 				} else if (y < 4*borderWidth) {
 					wheel.image = image3;
-					r = r3;
+					r = r2;
 				} else if (y < 5*borderWidth) {
 					wheel.image = image4;
-            		r = r4;
+					r = r3;
+				} else if (y < 6*borderWidth) {
+					wheel.image = image5;
+                           		r = r4;
 				}
 
 				for(var i=0; i < wheel.nbOfPoints+1; i++) {
@@ -150,7 +164,21 @@ function wheelClick(wheel, road, event) {
 				roadClick(wheel, road, road.canvasWidth/2); // draw wheel on road
 			}
 		}
-	}
+	} else if (wheel.straight) {
+            if ( wheel.clickX.length === 0 ) {
+                addClick(wheel,x,y);    
+            }   else {
+                if ( distanceBetween(wheel.clickX[0],wheel.clickY[0],x,y) < wheel.canvasHeight/25 ) {
+                    fillGap(wheel,wheel.clickX[wheel.clickX.length-1],wheel.clickY[wheel.clickY.length-1],wheel.clickX[0],wheel.clickY[0]);
+                    wheel.straight = false;
+                    drawWheel(wheel);
+                    wheelIsClosed(wheel,road);
+                } else {
+                    fillGap(wheel,wheel.clickX[wheel.clickX.length-1],wheel.clickY[wheel.clickY.length-1],x,y)
+                    drawWheel(wheel);
+                }
+            }
+        }
 }
 
 // predefined wheels

@@ -20,14 +20,14 @@ wheelCanvas.addEventListener("touchend", function(event){ wheelRelease(wheel,roa
 
 wheelCanvas.addEventListener("click", function(event){ wheelClick(wheel,road,event); }, false);
 
-roadCanvas.addEventListener("mousedown", function(event){ roadPress(road); }, false);
-roadCanvas.addEventListener("touchstart", function(event){ roadPress(road); }, false);
+roadCanvas.addEventListener("mousedown", function(event){ roadPress(road,event); }, false);
+roadCanvas.addEventListener("touchstart", function(event){ roadPress(road,event); }, false);
 
 roadCanvas.addEventListener("mousemove", function(event){ roadDragHandler(wheel,road,event); }, false);
 roadCanvas.addEventListener('touchmove', function(event){ roadDragHandler(wheel,road,event); }, false);
 
-roadCanvas.addEventListener("mouseup", function(event){ roadRelease(road); }, false);
-roadCanvas.addEventListener("touchend", function(event){ roadRelease(road); }, false);
+roadCanvas.addEventListener("mouseup", function(event){ roadRelease(road,event); }, false);
+roadCanvas.addEventListener("touchend", function(event){ roadRelease(road,event); }, false);
 
 image0.onload = function(){
 	wheel.image = image0;

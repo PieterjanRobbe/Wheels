@@ -3,8 +3,8 @@ entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**p3.tex
-(./p3.tex
+**p5.tex
+(./p5.tex
 LaTeX2e <2017-04-15>
 Babel <3.10> and hyphenation patterns for 84 language(s) loaded.
 (/usr/local/texlive/2017/texmf-dist/tex/latex/standalone/standalone.cls
@@ -57,21 +57,21 @@ File: size10.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
 \bibindent=\dimen102
 )
 \sa@box=\box26
-runsystem(pdflatex  -shell-escape  -jobname 'p3' '\expandafter\def\csname sa@in
-ternal@run\endcsname{1}\input{p3}')...executed.
+runsystem(pdflatex  -shell-escape  -jobname 'p5' '\expandafter\def\csname sa@in
+ternal@run\endcsname{1}\input{p5}')...executed.
 
- (./p3.aux)
-runsystem(convert -density 300 p3.pdf -resize 1080x800 -quality 90 p3.png)...ex
+ (./p5.aux)
+runsystem(convert -density 300 p5.pdf -resize 1080x800 -quality 90 p5.png)...ex
 ecuted.
 
 
 Class standalone:
-Output written on p3.png.
+Output written on p5.png.
  ) ) 
 Here is how much of TeX's memory you used:
- 691 strings out of 492995
- 10878 string characters out of 6132704
- 63651 words of memory out of 5000000
+ 693 strings out of 492995
+ 10886 string characters out of 6132704
+ 63609 words of memory out of 5000000
  4304 multiletter control sequences out of 15000+600000
  3640 words of font info for 14 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -582,8 +582,8 @@ File: pgflibraryshapes.multipart.code.tex 2010/01/07 v3.0.1a (rcs-revision 1.2)
 \pgfnodepartsevenbox=\box56
 \pgfnodepartsixbox=\box57
 \pgfnodepartfivebox=\box58
-))) (./p3.aux)
-\openout1 = `p3.aux'.
+))) (./p5.aux)
+\openout1 = `p5.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 12.
 LaTeX Font Info:    ... okay on input line 12.
@@ -658,17 +658,17 @@ s been generated with the most recent feature set (\pgfplotsset{compat=1.14}).
 
 [1
 
-] (./p3.aux) ) 
+] (./p5.aux) ) 
 Here is how much of TeX's memory you used:
  25247 strings out of 492995
  666489 string characters out of 6132704
- 846682 words of memory out of 5000000
+ 846649 words of memory out of 5000000
  28412 multiletter control sequences out of 15000+600000
  3640 words of font info for 14 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 70i,7n,120p,782b,725s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 70i,7n,120p,782b,706s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on p3.pdf (1 page, 11239 bytes).
+Output written on p5.pdf (1 page, 11254 bytes).
 PDF statistics:
  11 PDF objects out of 1000 (max. 8388607)
  7 compressed objects within 1 object stream

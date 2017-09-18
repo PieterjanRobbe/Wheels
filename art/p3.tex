@@ -1,4 +1,4 @@
-\documentclass{standalone}
+\documentclass[convert={density=300,size=1080x800,outext=.png}]{standalone}
 \usepackage{pgfplots}
 	\pgfplotsset{compat=newest}
 	\usetikzlibrary{positioning}
@@ -18,7 +18,7 @@
 
 	% definitions
 	\def\w{5}
-	\def\n{5}
+	\def\n{6}
 	\def\p{3}
 	\pgfmathsetmacro{\nMinusOne}{int(\n-1)}
 	\pgfmathsetmacro{\pPlusOne}{int(\p+1)}
@@ -50,7 +50,7 @@
 	\end{scope}
 	
 	% eraser
-	\begin{scope}[shift={($(scope1.north west)+(-\nInverse/2,-\nInverse/2)$)},rotate=50]
+	\begin{scope}[shift={($(scope1.north west)+(-\nInverse/1.7,-\nInverse/2)$)},rotate=50]
 		\begin{scope}[scale=\eraserScale]
 			\draw[fill=pink] (-1,-0.5) --++ (1,0) --++ (0,1) --++ (-1,0) -- cycle;
 			\draw[fill=white] (0,-0.5) --++ (1,0) --++ (0,1) --++ (-1,0) -- cycle;
@@ -64,12 +64,19 @@
 		\end{scope}
 	\end{scope}
 	
+	% fixed draw
+	\begin{scope}[shift={($(scope1.north east)+(-\nInverse/2,-\nInverse/2-\nInverse)$)}]
+		\begin{scope}[scale=\nInverse/5]
+			\draw[line cap=round] (-2,0) -- (-1,2) -- (0,0) -- (1,-2) -- (2,0);
+		\end{scope}
+	\end{scope}
+	
 	% diamond
 	\def\p{3}
 	\node[scale=\w/3,draw,diamond] at (\w+\nInverse/2,\p*\nInverse+\nInverse/2) {};
 	
 	% flower
-	\def\p{2}
+	\def\p{3}
 	\begin{scope}[shift={($(scope1.north east)+(-\nInverse/2,-\p*\nInverse-\nInverse/2)$)}]
 		\begin{scope}[scale=\nInverse/5]
 			\draw[domain=0:360,scale=1.5,samples=500] plot ({\x}:{1+.25*abs(sin(3*\x))});
@@ -81,7 +88,7 @@
 	\node[scale=\w/3,draw,regular polygon,regular polygon sides=5] at (\w+\nInverse/2,\p*\nInverse+\nInverse/2) {};
 	
 	% star
-	\def\p{4}
+	\def\p{5}
 	\begin{scope}[shift={($(scope1.north east)+(-\nInverse/2,-\p*\nInverse-\nInverse/2)$)}]
 		\begin{scope}[scale=\nInverse/5]
 			\draw[domain=0:360,scale=1.5,samples=500] plot ({\x}:{abs(1+0.3*sin(5*\x+pi/2))});

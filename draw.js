@@ -3,14 +3,16 @@ var image0 = new Image(),
 	image1 = new Image(),
 	image2 = new Image(),
 	image3 = new Image(),
-	image4 = new Image();
+	image4 = new Image(),
+	image5 = new Image();
 
 // Load images
-image0.src = "art/p4.png";
-image1.src = "art/p3.png";
-image2.src = "art/p2.png";
-image3.src = "art/p1.png";
-image4.src = "art/p0.png";
+image0.src = "art/p5.png";
+image1.src = "art/p4.png";
+image2.src = "art/p3.png";
+image3.src = "art/p2.png";
+image4.src = "art/p1.png";
+image5.src = "art/p0.png";
 
 // draw wheel on wheel canvas
 function drawWheel(wheel) {
@@ -39,6 +41,18 @@ function drawWheel(wheel) {
 		wheel.context.stroke();
 	}
 };
+
+function drawStraightLine(wheel,x,y) {
+    wheel.context.strokeStyle = "#df4b26";
+    wheel.context.lineJoin = "round";
+    wheel.context.lineWidth = wheel.canvasWidth/75;
+			
+    wheel.context.beginPath();
+    wheel.context.moveTo(wheel.clickX[wheel.clickX.length-1], wheel.clickY[wheel.clickY.length-1]);
+    wheel.context.lineTo(x, y);
+    wheel.context.closePath();
+    wheel.context.stroke();
+}
 
 // draw wheel on road canvas
 function drawWheelOnRoad(wheel, road, k, x) {
